@@ -16,6 +16,9 @@ from langchain_classic.memory.entity import (
     SQLiteEntityStore,
     UpstashRedisEntityStore,
 )
+from langchain_classic.memory.procedural_memory import (
+    InMemoryProceduralMemory,
+)
 from langchain_classic.memory.readonly import ReadOnlySharedMemory
 from langchain_classic.memory.simple import SimpleMemory
 from langchain_classic.memory.summary import ConversationSummaryMemory
@@ -105,6 +108,7 @@ __all__ = [
     "ElasticsearchChatMessageHistory",
     "FileChatMessageHistory",
     "InMemoryEntityStore",
+    "InMemoryProceduralMemory",
     "MomentoChatMessageHistory",
     "MongoDBChatMessageHistory",
     "MotorheadMemory",

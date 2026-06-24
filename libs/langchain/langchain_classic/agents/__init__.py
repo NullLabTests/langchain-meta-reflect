@@ -53,6 +53,10 @@ from langchain_classic.agents.structured_chat.base import (
     StructuredChatAgent,
     create_structured_chat_agent,
 )
+from langchain_classic.agents.meta_reflect.base import (
+    SelfImprovingAgentExecutor,
+    create_meta_reflect_agent,
+)
 from langchain_classic.agents.tool_calling_agent.base import create_tool_calling_agent
 from langchain_classic.agents.xml.base import XMLAgent, create_xml_agent
 
@@ -135,6 +139,7 @@ __all__ = [
     "ReActChain",
     "ReActTextWorldAgent",
     "SelfAskWithSearchChain",
+    "SelfImprovingAgentExecutor",
     "StructuredChatAgent",
     "Tool",
     "XMLAgent",
@@ -151,6 +156,7 @@ __all__ = [
     "create_spark_sql_agent",
     "create_sql_agent",
     "create_structured_chat_agent",
+    "create_meta_reflect_agent",
     "create_tool_calling_agent",
     "create_vectorstore_agent",
     "create_vectorstore_router_agent",

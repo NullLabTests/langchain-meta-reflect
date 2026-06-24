@@ -1,80 +1,304 @@
 <div align="center">
-  <a href="https://docs.langchain.com/oss/python/langchain/overview">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset=".github/images/logo-dark.svg">
-      <source media="(prefers-color-scheme: light)" srcset=".github/images/logo-light.svg">
-      <img alt="LangChain Logo" src=".github/images/logo-dark.svg" width="50%">
-    </picture>
-  </a>
+
+# LangChain Meta-Reflect
+
+**Self-Improving Agents with Procedural Memory**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.12+](https://img.shields.io/badge/python-3.12%2B-blue.svg)](https://www.python.org/downloads/)
+[![LangChain Core](https://img.shields.io/badge/langchain--core-0.3.x-green.svg)](https://pypi.org/project/langchain-core/)
+[![arXiv](https://img.shields.io/badge/arXiv-2603.19461-b31b1b.svg)](https://arxiv.org/abs/2603.19461)
+[![arXiv](https://img.shields.io/badge/arXiv-2603.24639-b31b1b.svg)](https://arxiv.org/abs/2603.24639)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 </div>
-
-<div align="center">
-  <h3>The agent engineering platform.</h3>
-</div>
-
-<div align="center">
-  <a href="https://opensource.org/licenses/MIT" target="_blank"><img src="https://img.shields.io/pypi/l/langchain" alt="PyPI - License"></a>
-  <a href="https://pypistats.org/packages/langchain" target="_blank"><img src="https://img.shields.io/pepy/dt/langchain" alt="PyPI - Downloads"></a>
-  <a href="https://pypi.org/project/langchain/#history" target="_blank"><img src="https://img.shields.io/pypi/v/langchain?label=%20" alt="Version"></a>
-  <a href="https://x.com/langchain_oss" target="_blank"><img src="https://img.shields.io/twitter/url/https/twitter.com/langchain_oss.svg?style=social&label=Follow%20%40LangChain" alt="Twitter / X"></a>
-</div>
-
-<br>
-
-LangChain is a framework for building agents and LLM-powered applications. It helps you chain together interoperable components and third-party integrations to simplify AI application development — all while future-proofing decisions as the underlying technology evolves.
-
-> [!TIP]
-> Just getting started? Check out **[Deep Agents](http://docs.langchain.com/oss/python/deepagents/)** — a higher-level package built on LangChain for agents that have built-in capabilites for common usage patterns such as planning, subagents, file system usage, and more.
-
-## Quickstart
-
-```bash
-uv add langchain
-```
-
-```python
-from langchain.chat_models import init_chat_model
-
-model = init_chat_model("openai:gpt-5.5")
-result = model.invoke("Hello, world!")
-```
-
-If you're looking for more advanced customization or agent orchestration, check out [LangGraph](https://github.com/langchain-ai/langgraph), our framework for building controllable agent workflows.
-
-For an equivalent JS/TS library, check out [LangChain.js](https://github.com/langchain-ai/langchainjs).
-
-> [!TIP]
-> For developing, debugging, and deploying AI agents and LLM applications, see [LangSmith](https://docs.langchain.com/langsmith/home).
-
-## LangChain ecosystem
-
-While the LangChain framework can be used standalone, it also integrates seamlessly with any LangChain product, giving developers a full suite of tools when building LLM applications.
-
-- **[Deep Agents](http://docs.langchain.com/oss/python/deepagents/)** — Build agents that can plan, use subagents, and leverage file systems for complex tasks
-- **[LangGraph](https://docs.langchain.com/oss/python/langgraph/overview)** — Build agents that can reliably handle complex tasks with our low-level agent orchestration framework
-- **[Integrations](https://docs.langchain.com/oss/python/integrations/providers/overview)** — Chat & embedding models, tools & toolkits, and more
-- **[LangSmith](https://www.langchain.com/langsmith)** — Agent evals, observability, and debugging for LLM apps
-- **[LangSmith Deployment](https://docs.langchain.com/langsmith/deployments)** — Deploy and scale agents with a purpose-built platform for long-running, stateful workflows
-
-## Why use LangChain?
-
-LangChain helps developers build applications powered by LLMs through a standard interface for models, embeddings, vector stores, and more.
-
-- **Real-time data augmentation** — Easily connect LLMs to diverse data sources and external/internal systems, drawing from LangChain's vast library of integrations with model providers, tools, vector stores, retrievers, and more
-- **Model interoperability** — Swap models in and out as your engineering team experiments to find the best choice for your application's needs. As the industry frontier evolves, adapt quickly — LangChain's abstractions keep you moving without losing momentum
-- **Rapid prototyping** — Quickly build and iterate on LLM applications with LangChain's modular, component-based architecture. Test different approaches and workflows without rebuilding from scratch, accelerating your development cycle
-- **Production-ready features** — Deploy reliable applications with built-in support for monitoring, evaluation, and debugging through integrations like LangSmith. Scale with confidence using battle-tested patterns and best practices
-- **Vibrant community and ecosystem** — Leverage a rich ecosystem of integrations, templates, and community-contributed components. Benefit from continuous improvements and stay up-to-date with the latest AI developments through an active open-source community
-- **Flexible abstraction layers** — Work at the level of abstraction that suits your needs — from high-level chains for quick starts to low-level components for fine-grained control. LangChain grows with your application's complexity
 
 ---
 
-## Resources
+## What's New
 
-- [Documentation](https://docs.langchain.com/oss/python/langchain/overview) — conceptual overviews and guides
-- [LangChain ecosystem overview](https://docs.langchain.com/oss/python/concepts/products) — how LangChain, LangGraph, and Deep Agents fit together
-- [API reference](https://reference.langchain.com/python) — complete reference for all public classes, functions, and types
-- [Discussions](https://forum.langchain.com/c/oss-product-help-lc-and-lg/langchain/14) — community forum for technical questions, ideas, and feedback
-- [LangChain Academy](https://academy.langchain.com/) — comprehensive, free courses on LangChain libraries and products, made by the LangChain team
-- [Contributing Guide](https://docs.langchain.com/oss/python/contributing/overview) — how to contribute and find good first issues
-- [Code of Conduct](https://github.com/langchain-ai/langchain/?tab=coc-ov-file) — community guidelines and standards
+**Meta-Reflect** adds a **self-improving agent** to LangChain that learns across
+task executions by maintaining a procedural memory of reusable heuristics.
+
+Key innovation: Instead of starting from scratch on every task, the agent:
+1. **Retrieves** relevant heuristics from past experience before each task
+2. **Reflects** on its execution after each task to extract new heuristics
+3. **Improves** autonomously over time without manual prompt engineering
+
+This is not prompt engineering — it's **experience-driven self-improvement**.
+
+---
+
+## Research Backing
+
+This feature synthesizes insights from recent advances in self-improving AI agents:
+
+| Paper | arXiv | Contribution |
+|-------|-------|-------------|
+| **HyperAgents** | [2603.19461](https://arxiv.org/abs/2603.19461) | Self-referential agents that modify their own behavior |
+| **Experiential Reflective Learning** | [2603.24639](https://arxiv.org/abs/2603.24639) | Reusable heuristics from execution trajectories |
+| **MARS** | [2601.11974](https://arxiv.org/abs/2601.11974) | Efficient single-cycle metacognitive reflection |
+| **Darwin Gödel Machine** | [2505.22954](https://arxiv.org/abs/2505.22954) | Open-ended self-improvement through evolution |
+| **Mem^p** | [2508.06433](https://arxiv.org/abs/2508.06433) | Procedural memory as a first-class optimization object |
+| **AdMem** | [2606.06787](https://arxiv.org/abs/2606.06787) | Unified semantic+episodic+procedural memory |
+
+---
+
+## Architecture
+
+```mermaid
+flowchart TD
+    subgraph "SelfImprovingAgentExecutor"
+        A[Task Input] --> B[Heuristic Retrieval]
+        B --> C[LLM Agent with Context]
+        C --> D[Tool Execution]
+        D --> E{Task Complete?}
+        E -->|No| D
+        E -->|Yes| F[Reflection & Extraction]
+        F --> G[Procedural Memory]
+        G --> B
+    end
+    
+    subgraph "Procedural Memory"
+        H[(Heuristic Store)]
+        I[Success Patterns]
+        J[Failure Patterns]
+        K[General Guidelines]
+    end
+    
+    G --> H
+    H --> I
+    H --> J
+    H --> K
+```
+
+### Component Diagram
+
+```mermaid
+classDiagram
+    class BaseProceduralMemory {
+        +add_heuristics(heuristics)
+        +retrieve_heuristics(task, top_k, types)
+        +get_all_heuristics()
+        +clear()
+        +__len__()
+    }
+    
+    class InMemoryProceduralMemory {
+        -llm: BaseLanguageModel
+        -heuristics: list[Heuristic]
+        +reflect_and_store(task, trace)
+        +add_heuristics(heuristics)
+        +retrieve_heuristics(task, top_k, types)
+    }
+    
+    class SelfImprovingAgentExecutor {
+        -agent: Runnable
+        -tools: list[BaseTool]
+        -memory: BaseProceduralMemory
+        +invoke(inputs)
+        +ainvoke(inputs)
+    }
+    
+    class Heuristic {
+        +id: str
+        +content: str
+        +type: HeuristicType
+        +task_description: str
+        +metadata: dict
+    }
+    
+    class HeuristicType {
+        SUCCESS_PATTERN
+        FAILURE_PATTERN
+        GENERAL_GUIDELINE
+    }
+    
+    BaseProceduralMemory <|-- InMemoryProceduralMemory
+    SelfImprovingAgentExecutor o-- BaseProceduralMemory
+    InMemoryProceduralMemory o-- Heuristic
+    Heuristic --> HeuristicType
+```
+
+---
+
+## Installation
+
+```bash
+# Clone this enhanced fork
+git clone https://github.com/NullLabTests/langchain-meta-reflect.git
+cd langchain-meta-reflect
+
+# Install core dependencies
+pip install -e libs/core
+pip install -e libs/langchain
+
+# Install an LLM provider (e.g., OpenAI)
+pip install langchain-openai
+```
+
+---
+
+## Quickstart
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain_classic.agents.meta_reflect import create_meta_reflect_agent
+from langchain_classic.memory.procedural_memory import (
+    InMemoryProceduralMemory,
+)
+from langchain_core.tools import tool
+
+# 1. Define tools
+@tool
+def calculator(expression: str) -> str:
+    """Evaluate a mathematical expression."""
+    return str(eval(expression))
+
+tools = [calculator]
+
+# 2. Initialize LLM and procedural memory
+llm = ChatOpenAI(model="gpt-4o")
+memory = InMemoryProceduralMemory(llm=llm)
+
+# 3. Create self-improving agent
+agent = create_meta_reflect_agent(
+    llm=llm,
+    tools=tools,
+    procedural_memory=memory,
+    verbose=True,
+)
+
+# 4. First invocation — no prior experience
+result = agent.invoke({"input": "Calculate 15 * 7 + 3"})
+print(result["output"])  # 108
+
+# The agent has now learned heuristics about using the calculator
+
+# 5. Second invocation — benefits from past experience
+result = agent.invoke({"input": "Calculate (42 - 8) * 2"})
+print(result["output"])  # 68
+
+# 6. Check accumulated knowledge
+print(f"Heuristics learned: {len(agent.procedural_memory)}")
+```
+
+---
+
+## How It Works
+
+### Before Execution: Heuristic Injection
+
+The agent retrieves relevant heuristics from procedural memory and injects them
+into the system prompt as contextual guidance. These heuristics might be:
+
+- *"Always verify intermediate results by breaking complex calculations into steps."*
+- *"When using the calculator tool, pass the full expression as a single string."*
+- *"Avoid chaining too many operations — verify after each step."*
+
+### After Execution: Reflective Extraction
+
+The agent's meta-cognitive module reviews the execution trace and extracts new
+heuristics:
+
+```
+Trace: Thought: I need to multiply 15 by 7...
+       Action: calculator(15 * 7)
+       Observation: 105
+       ...
+
+Extracted Heuristics:
+  SUCCESS_PATTERN: Break complex expressions into sub-operations for clarity.
+  FAILURE_PATTERN: Avoid using commas in calculator expressions.
+  GENERAL_GUIDELINE: When result seems unexpected, verify with a second approach.
+```
+
+### Over Time: Cumulative Learning
+
+With repeated use, the procedural memory grows into a rich knowledge base of
+domain-specific strategies, making the agent increasingly competent without
+any manual tuning.
+
+---
+
+## Comparison with Standard LangChain
+
+| Feature | Standard `AgentExecutor` | `SelfImprovingAgentExecutor` |
+|---------|------------------------|------------------------------|
+| Cross-task learning | None | Procedural memory accumulates experience |
+| Mistake avoidance | Cannot learn | Failure patterns prevent recurrence |
+| Strategy reuse | Manual prompt engineering | Automatic heuristic extraction |
+| Improvement over time | Static | Self-improving with use |
+| Complexity overhead | Baseline | One additional component |
+| API compatibility | Yes | Wraps existing agent patterns |
+
+---
+
+## Core Abstractions
+
+### `BaseProceduralMemory`
+Abstract interface in `langchain_core.memory.procedural`:
+- `add_heuristics()` — Store heuristics
+- `retrieve_heuristics()` — Get relevant heuristics for a task
+- `get_all_heuristics()` — List all stored knowledge
+- `clear()` — Reset memory
+
+### `InMemoryProceduralMemory`
+Concrete implementation in `langchain_classic.memory.procedural_memory`:
+- Uses an LLM for reflection and retrieval
+- Organizes heuristics by type (success, failure, guideline)
+- Supports filtering by heuristic type
+
+### `SelfImprovingAgentExecutor`
+Agent executor in `langchain_classic.agents.meta_reflect.base`:
+- Wraps a tool-calling agent with procedural memory
+- Injects heuristics before each run
+- Reflects after each run
+- Supports both sync (`invoke`) and async (`ainvoke`)
+
+---
+
+## Development
+
+```bash
+# Run core tests
+python -m pytest libs/langchain/tests/unit_tests/agents/test_meta_reflect_core.py -v
+
+# Run all tests
+python -m pytest libs/langchain/tests/unit_tests/agents/ -v
+```
+
+---
+
+## License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+
+It is an enhanced fork of [LangChain](https://github.com/langchain-ai/langchain),
+retaining the original MIT license for all unmodified components. The new
+research-inspired components (procedural memory, self-improving agent) follow
+the same permissive licensing.
+
+---
+
+## Citation
+
+If you use this work in research, please cite the underlying papers:
+
+```bibtex
+@misc{zhang2026hyperagents,
+    title={HyperAgents: Self-Referential Agents that Modify Themselves},
+    author={Zhang et al.},
+    year={2026},
+    eprint={2603.19461},
+    archivePrefix={arXiv},
+}
+
+@misc{erl2026,
+    title={Experiential Reflective Learning for Self-Improving LLM Agents},
+    author={Multiple Authors},
+    year={2026},
+    eprint={2603.24639},
+    archivePrefix={arXiv},
+}
+```
