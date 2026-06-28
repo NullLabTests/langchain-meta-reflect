@@ -29,7 +29,7 @@
 | `SelfImprovingAgentExecutor` | `langchain_classic.agents.meta_reflect` | Agent executor wrapping any tool-calling agent with pre-task heuristic injection + post-task reflection |
 | `create_meta_reflect_agent()` | `langchain_classic.agents.meta_reflect` | Factory function for one-liner setup |
 
-**Zero breaking changes.** All existing LangChain agents continue to work unmodified.
+**Zero breaking changes.** All existing LangChain agents continue to work, unmodified.
 
 ---
 
